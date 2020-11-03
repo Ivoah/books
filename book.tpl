@@ -4,6 +4,7 @@
 <html>
     <head>
         <title>Noah's booklist</title>
+        <link rel="icon" href="/static/favicon.png">
         <link rel="stylesheet" href="/static/style.css">
     </head>
     <body>
