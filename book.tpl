@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Noah's booklist</title>
+        <title>{{book['title']}}</title>
         <link rel="icon" href="/static/favicon.png">
         <link rel="stylesheet" href="/static/style.css">
     </head>
