@@ -15,6 +15,8 @@ th, td {
 }
 
 p {
-    padding-left: 100px;
-    padding-right: 100px;
+    max-width: 750px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
 }
