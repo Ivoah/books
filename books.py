@@ -41,7 +41,7 @@ def main():
     db.close()
     return template('root.tpl', books=books)
 
-@get('/<isbn:int>')
+@get('/<isbn>')
 def book(isbn):
     db = db_connection()
     with db.cursor() as cursor:
@@ -52,7 +52,7 @@ def book(isbn):
     db.close()
     return template('book.tpl', book=book, quotes=quotes)
 
-@post('/<isbn:int>/add_quote')
+@post('/<isbn>/add_quote')
 @auth_basic(lambda u, p: {'user': u, 'password': p} == CREDS)
 def add_quote(isbn):
     quote = request.forms.quote
