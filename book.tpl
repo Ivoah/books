@@ -1,4 +1,5 @@
 %import markdown
+%from datetime import date
 
 <!DOCTYPE html>
 <html>
@@ -22,13 +23,11 @@
         %end
         <hr>
         <form action="/{{book['isbn']}}/add_quote" method="post">
-            <p>
-                <textarea name="quote"></textarea>
-            </p>
+            <p><textarea name="quote"></textarea></p>
             ---
             <p>
                 <input type="text" name="location"><br>
-                <input type="date" name="date">
+                <input type="date" name="date" value="{{date.today().isoformat()}}">
             </p>
             <input type="submit" value="Add quote">
         </form>
