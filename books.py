@@ -71,7 +71,7 @@ def add_quote(isbn):
         ''', (isbn, last_idx + 1, quote, location, date))
         db.commit()
     db.close()
-    return redirect(f'/{isbn}')
+    return redirect(f'/{isbn}#bottom')
 
 application = default_app()
 

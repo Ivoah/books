@@ -31,5 +31,6 @@
             </p>
             <input type="submit" value="Add quote">
         </form>
+        <div id="bottom"></div>
     </body>
 </html>
