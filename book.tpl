@@ -12,14 +12,16 @@
         <a href="/">All books</a>
         <h1>{{book['title']}} - {{book['author']}}</h1>
         <h3>{{book['started']}} – {{book['finished'] or 'Unfinished'}}</h3>
-        %for quote in quotes:
-            <hr>
-            {{!markdown.markdown(quote['quote'])}}
-            ---
-            <p>
-                {{quote['location']}}<br>
-                {{quote['date']}}
-            </p>
+        %for i, quote in enumerate(quotes):
+            <div{{!' id="last"' if (i == len(quotes) - 1) else ''}}>
+                <hr>
+                {{!markdown.markdown(quote['quote'])}}
+                ---
+                <p>
+                    {{quote['location']}}<br>
+                    {{quote['date']}}
+                </p>
+            </div>
         %end
         <hr>
         <form action="/{{book['isbn']}}/add_quote" method="post">
@@ -31,6 +33,5 @@
             </p>
             <input type="submit" value="Add quote">
         </form>
-        <div id="bottom"></div>
     </body>
 </html>
