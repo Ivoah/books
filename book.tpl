@@ -12,12 +12,20 @@
         <a href="/">All books</a>
         <h1>{{book['title']}} - {{book['author']}}</h1>
         <h3>{{book['started']}} – {{book['finished'] or 'Unfinished'}}</h3>
+        <!-- <ul>
+            %for bookmark in bookmarks:
+                <li>{{bookmark['date']}}: {{bookmark['location']}}</li>
+            %end
+        </ul> -->
+        <p>
+            {{!' | '.join('<span class="bookmark">{date}: {location}</span>'.format(**bookmark) for bookmark in bookmarks)}}
+        </p>
         %for i, quote in enumerate(quotes):
             <div{{!' id="last"' if (i == len(quotes) - 1) else ''}}>
                 <hr>
                 {{!markdown.markdown(quote['quote'])}}
                 ---
-                <p>
+                <p class="footer">
                     {{quote['location']}}<br>
                     {{quote['date']}}
                 </p>

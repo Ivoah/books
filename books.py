@@ -49,8 +49,10 @@ def book(isbn):
         book = cursor.fetchone()
         cursor.execute('SELECT * FROM quotes WHERE isbn=%s ORDER BY idx', isbn)
         quotes = cursor.fetchall()
+        cursor.execute('SELECT * FROM bookmarks WHERE isbn=%s ORDER BY date', isbn)
+        bookmarks = cursor.fetchall()
     db.close()
-    return template('book.tpl', book=book, quotes=quotes)
+    return template('book.tpl', book=book, quotes=quotes, bookmarks=bookmarks)
 
 @post('/<isbn>/add_quote')
 @auth_basic(lambda u, p: {'user': u, 'password': p} == CREDS)
