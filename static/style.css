@@ -22,9 +22,22 @@ th, td {
     padding: 15px;
 }
 
+a:hover {
+    box-shadow: 0 0 10px rgb(127, 127, 255);
+}
+
+td > a {
+    display: inline-block;
+    line-height: 1;
+}
+
 p {
     max-width: 750px;
     margin: auto;
     padding-left: 25px;
     padding-right: 25px;
+}
+
+.subtitle {
+    font-size: 0.75em;
 }

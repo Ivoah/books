@@ -21,7 +21,12 @@
             %for row in books:
                 <tr id="{{row['isbn']}}">
                     <td><a href="https://openlibrary.org/isbn/{{row['isbn']}}">{{row['isbn']}}</a></td>
-                    <td><a href="/{{row['isbn']}}">{{row['title']}}</a></td>
+                    <td>
+                        <a href="/{{row['isbn']}}">
+                            {{row['title']}}<br>
+                            <span class="subtitle">{{row['subtitle']}}</span>
+                        </a>
+                    </td>
                     <td>{{row['author']}}</td>
                     <td>{{row['started']}}</td>
                     <td>{{row['finished'] or 'Unfinished'}}</td>

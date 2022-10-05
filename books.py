@@ -29,6 +29,7 @@ def main():
             SELECT
                 books.isbn,
                 title,
+                subtitle,
                 author,
                 started,
                 finished,
@@ -74,6 +75,22 @@ def add_quote(isbn):
         db.commit()
     db.close()
     redirect(f'/{isbn}#last')
+
+@post('/<isbn>/add_bookmark')
+@auth_basic(lambda u, p: {'user': u, 'password': p} == CREDS)
+def add_bookmark(isbn):
+    date = request.forms.date
+    location = request.forms.location
+
+    db = db_connection()
+    with db.cursor() as cursor:
+        cursor.execute('''
+            INSERT INTO bookmarks (isbn, date, location)
+            VALUES (%s, %s, %s);
+        ''', (isbn, date, location))
+        db.commit()
+    db.close()
+    redirect(f'/{isbn}')
 
 application = default_app()
 
