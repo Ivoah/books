@@ -48,7 +48,7 @@ def book(isbn):
     with db.cursor() as cursor:
         cursor.execute('SELECT * FROM books WHERE isbn=%s', isbn)
         book = cursor.fetchone()
-        cursor.execute('SELECT * FROM quotes WHERE isbn=%s ORDER BY idx', isbn)
+        cursor.execute('SELECT * FROM quotes WHERE isbn=%s ORDER BY id', isbn)
         quotes = cursor.fetchall()
         cursor.execute('SELECT * FROM bookmarks WHERE isbn=%s ORDER BY date', isbn)
         bookmarks = cursor.fetchall()
@@ -66,12 +66,12 @@ def add_quote(isbn):
 
     db = db_connection()
     with db.cursor() as cursor:
-        cursor.execute('SELECT IFNULL(max(idx), 0) FROM quotes WHERE isbn=%s', isbn)
-        last_idx, = map(int, cursor.fetchone().values())
+        cursor.execute('SELECT IFNULL(max(id), 0) FROM quotes WHERE isbn=%s', isbn)
+        last_id, = map(int, cursor.fetchone().values())
         cursor.execute('''
-            INSERT INTO quotes (isbn, idx, quote, location, date)
+            INSERT INTO quotes (isbn, id, quote, location, date)
             VALUES (%s, %s, %s, %s, %s);
-        ''', (isbn, last_idx + 1, quote, location, date))
+        ''', (isbn, last_id + 1, quote, location, date))
         db.commit()
     db.close()
     redirect(f'/{isbn}#last')

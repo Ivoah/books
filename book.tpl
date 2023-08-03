@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="/static/style.css">
     </head>
     <body>
-        <a href="/">All books</a>
+        <a class="lnav" href="/">&lt; all books</a>
         <h1>{{book['title']}} - {{book['author']}}</h1>
         <h3>{{book['subtitle']}}</h3>
         <h3>{{book['started']}} – {{book['finished'] or 'Unfinished'}}</h3>
@@ -29,7 +29,9 @@
         %for i, quote in enumerate(quotes):
             <div{{!' id="last"' if (i == len(quotes) - 1) else ''}}>
                 <hr>
-                {{!markdown.markdown(quote['quote'])}}
+                <div class="markdown">
+                    {{!markdown.markdown(quote['quote'])}}
+                </div>
                 ---
                 <p class="footer">
                     {{quote['location']}}<br>
