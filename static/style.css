@@ -12,3 +12,7 @@ textarea {
     width: 100%;
     height: 15em;
 }
+
+a {
+    white-space: normal;
+}
